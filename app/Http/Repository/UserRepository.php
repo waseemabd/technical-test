@@ -53,8 +53,6 @@ class UserRepository extends BaseRepository implements IUserRepository
 
             if($input['role'] == 0 || $input['role']==1){
                 $input['password'] = bcrypt($input['password']);
-//            $input['role'] = $input['role'];
-//            dd($input);
                 $user = User::create($input);
                 $success['token'] = $user->createToken('MyApp')->accessToken;
                 $success['user'] = $user;

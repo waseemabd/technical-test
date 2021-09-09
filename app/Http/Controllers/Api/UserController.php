@@ -16,7 +16,6 @@ class UserController extends Controller
     //
 
     protected $userRepository;
-    protected $studentRepository;
     protected $requestData;
 
     public function __construct(IUserRepository $userRepository)

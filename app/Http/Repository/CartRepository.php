@@ -20,7 +20,6 @@ class CartRepository extends BaseRepository implements ICartRepository
     public function allProductsInCart($user_id){
         try {
             $cart = $this->model->where('user_id', $user_id)->firstOrFail();
-            $cartProducts = $cart->products()->get();
             $products_arr = [];
             $total = 0;
             foreach ($cart->products as $product){

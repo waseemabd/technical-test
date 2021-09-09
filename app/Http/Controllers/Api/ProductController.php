@@ -128,9 +128,9 @@ class ProductController extends Controller
 
             $data = $this->requestData;
             $data['user_id']= Auth::user()->id;
-////            dd($validator_rules);
+
             $validator = Validator::make($data, Product::create_update_rules, ValidatorHelper::messages());
-//            dd($data);
+
 
             if($validator->passes()){
                 $model = $this->productRepository->update($data, $data['product_id']);
@@ -155,10 +155,11 @@ class ProductController extends Controller
     {
         //
         try {
-//            dd($this->requestData['product_id']);
+
             $id = $request['product_id'];
             $this->productRepository->delete($id);
             return JsonResponse::respondSuccess(trans(JsonResponse::MSG_DELETED_SUCCESSFULLY));
+
         }catch (\Exception $e){
             dd($e);
             return  JsonResponse::respondError($e->getMessage());
